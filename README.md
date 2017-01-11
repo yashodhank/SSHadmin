@@ -1,3 +1,12 @@
 #<b>SSHadmin</b>
 
-###Remote administrator of SSH connections with multiple functionalities like data and file exchange, as well as projects, photos and videos. Invisible remote access, automation for VNC server configuration on the remote machine and installation of necessary programs, redirects for graphical execution of Applications, data traffic with pages visited in plain text, access to the camera device through optical nerve (without turning on the camera light), SSH connections without password and possibility of poisoning among other things.
+###Remote administrator of SSH connections with the following multiple functionalities:
+
+- Data and file exchange, as well as projects, photos and videos <br>
+- Invisible remote access <br>
+- Automation for VNC server configuration on the remote machine and installation of necessary programs <br>
+- Redirects for graphical execution of Applications <br>
+- Data traffic with pages visited in plain text <br>
+- Access to the camera device through <b>optical nerve</b> (without turning on the camera light) <br>
+- SSH connections without password <br> 
+- Possibility of poisoning among other things <br>
