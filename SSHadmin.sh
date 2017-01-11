@@ -25,7 +25,6 @@ if [ "$(id -u)" = "0" ]; then
   sed '/https:/d' listado_ipsG >> listado_ips && rm listado_ipsG
   sed '/localhost/d' listado_ips >> listado_ips2 && rm listado_ips && mv listado_ips2 listado_ips
   sed '/addresses/d' listado_ips >> listado_ips2 && rm listado_ips && mv listado_ips2 listado_ips
-  sed '/192.168.1.1/d' listado_ips >> listado_ips2 && rm listado_ips && mv listado_ips2 listado_ips
 
   while read line
     do
