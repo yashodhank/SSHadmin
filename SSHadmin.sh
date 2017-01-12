@@ -62,13 +62,13 @@ if [ "$(id -u)" = "0" ]; then
     sleep 2
   fi
 
-  if [ ! -x /usr/bin/urlsnarf ];then
-    echo -e -n "\n$redColour->$endColour$yellowColour Programa$redColour urlsnarf$endColour$yellowColour no instalado, se procede a instalar...\n\n$endColour "
+  if [ ! -x /usr/bin/dsniff ];then
+    echo -e -n "\n$redColour->$endColour$yellowColour Programa$redColour dsniff$endColour$yellowColour no instalado, se procede a instalar...\n\n$endColour "
     sleep 2
-    apt-get install urlsnarf
+    apt-get install dsniff
 
   else
-    echo -e "\n$redColour->$endColour$yellowColour Programa$redColour urlnsarf$endColour$yellowColour instalado$endColour\n"
+    echo -e "\n$redColour->$endColour$yellowColour Programa$redColour dsniff$endColour$yellowColour instalado$endColour\n"
     sleep 2
   fi
 
