@@ -129,8 +129,8 @@ if [ "$(id -u)" = "0" ]; then
               echo -e "\n$redColour-> A continuación va a tener que introducir la contraseña del equipo remoto...$endColour\n"
               sleep 2
               scp SSHadmin.sh $name_remote@$ip_remote:/tmp
-              echo -e "\n$yellowColour-> Archivo transferido correctamente, ejecute la opción 3 para acceder al sistema$endColour\n"
-              sleep 2
+              echo -e "\n\n$yellowColour-> Archivo transferido correctamente, ejecute la opción 3 para acceder al sistema$endColour\n"
+              sleep 5
 
           ;;
 
@@ -141,10 +141,10 @@ if [ "$(id -u)" = "0" ]; then
               sleep 2
               echo -e "\n$redColour-> A continuación va a tener que introducir la contraseña del equipo remoto...$endColour"
               sleep 2
-              echo -e "\n$redColour-> Una vez dentro accede al directorio /tmp del sistema remoto, encontrarás este mismo ejecutable$endColour\n"
-              sleep 2
+              echo -e "\n$redColour-> Una vez dentro accede al directorio /tmp del sistema remoto, encontrarás este mismo ejecutable$endColour"
+              sleep 5
               echo -e "\n$redColour-> Deberás ejecutar el fichero en modo remoto$endColour\n"
-              sleep 2
+              sleep 4
               ssh -p 22 $name_remote@$ip_remote
 
           ;;
@@ -186,7 +186,7 @@ if [ "$(id -u)" = "0" ]; then
     sleep 0.2
     echo -e "5.$grayColour  Redirección gráfica de aplicaciones$redColour (equipo remoto)$endColour$endColour"
     sleep 0.2
-    echo -e "6.$grayColour Mensajes$redColour (equipo remoto)$endColour$endColour\n"
+    echo -e "6.$grayColour  Mensajes$redColour (equipo remoto)$endColour$endColour\n"
     sleep 2
 
   fi
