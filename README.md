@@ -12,7 +12,7 @@
 - SSH connections without password <br> 
 - Possibility of poisoning among other things <br>
 
-<br>These are the steps you have to follow:</br>
+<b>These are the steps you have to follow:</b>
 
 - First execute the program on your local machine as local when asked <br>
 - Then, private ip's on your local network will be saved in a file <br>
