@@ -56,7 +56,6 @@ if [ "$(id -u)" = "0" ]; then
     echo -e -n "\n$redColour->$endColour$yellowColour Programa$redColour nmap$endColour$yellowColour no instalado, se procede a instalar...\n\n$endColour "
     sleep 2
     apt-get install nmap
-    apt-get install dsniff
 
   else
     echo -e "\n$redColour->$endColour$yellowColour Programa$redColour nmap$endColour$yellowColour instalado$endColour\n"
@@ -239,7 +238,10 @@ if [ "$(id -u)" = "0" ]; then
 
         ;;
 
-        2 ) echo -e "\n$yellowColour-> Analizando el tráfico de la red...$endColour\n"
+        2 ) echo " "
+            apt-get install dsniff
+            clear
+            echo -e "\n$yellowColour-> Analizando el tráfico de la red...$endColour\n"
             sleep 2
             echo -e "\n$yellowColour-> Las páginas visitadas serán mostradas en texto plano...$endColour\n"
             sleep 2
