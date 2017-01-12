@@ -23,3 +23,5 @@
 - Then you go to /tmp directory and execute the program, this time as remote (remote script has another menu) <br>
 - The program will install the necessary applications on the remote machine to execute the script correctly (the user will not notice) <br>
 - A new menu will appear and then you can select one of the new options to perform, such as viewing the webcam, analyzing data traffic, collapsing the system, etc. <br>
+
+##You can try it with your own machine (your user-name machine and your private-ip machine)
