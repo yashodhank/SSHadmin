@@ -92,31 +92,66 @@ if [ "$(id -u)" = "0" ]; then
     sleep 1
     echo -e "$redColour ------------------------------------------------------------$endColour"
     sleep 1
-    echo -e "1.$grayColour  Ver direcciones IP's de la red (equipo local)$endColour"
+    echo -e "1.$grayColour  Ver direcciones IP's de la red$redColour (equipo local)$endColour$endColour"
     sleep 0.2
-    echo -e "2.$grayColour  Iniciar proceso de copia de fichero (equipo local-remoto)$endColour"
+    echo -e "2.$grayColour  Iniciar proceso de copia de fichero$redColour (equipo local-remoto)$endColour$endColour"
     sleep 0.2
-    echo -e "3.$grayColour  Simple conexión remota vía SSH (equipo local-remoto)$endColour"
+    echo -e "3.$grayColour  Simple conexión remota vía SSH$redColour (equipo local-remoto)$endColour$endColour"
     sleep 0.2
-    echo -e "4.$grayColour  Conexión remota vía SSH invisible (equipo local-remoto)$endColour"
+    echo -e "4.$grayColour  Conexión remota vía SSH invisible$redColour (equipo local-remoto)$endColour$endColour"
     sleep 0.2
-    echo -e "5.$grayColour  Acceso a la cámara (equipo remoto)$endColour"
+    echo -e "5.$grayColour  Acceso a la cámara$redColour (equipo remoto)$endColour$endColour"
     sleep 0.2
-    echo -e "6.$grayColour  Capturador de tráfico de datos - páginas visitadas (equipo remoto)$endColour"
+    echo -e "6.$grayColour  Capturador de tráfico de datos - páginas visitadas$redColour (equipo remoto)$endColour$endColour"
     sleep 0.2
-    echo -e "7.$grayColour  Robar información vía SCP (equipo remoto)$endColour"
+    echo -e "7.$grayColour  Robar información vía SCP$redColour (equipo remoto)$endColour$endColour"
     sleep 0.2
-    echo -e "8.$grayColour  Ataques al sistema y envenenamiento (equipo remoto)$endColour"
+    echo -e "8.$grayColour  Ataques al sistema y envenenamiento$redColour (equipo remoto)$endColour$endColour"
     sleep 0.2
-    echo -e "9.$grayColour  Redirección gráfica de aplicaciones (equipo remoto)$endColour"
+    echo -e "9.$grayColour  Redirección gráfica de aplicaciones$redColour (equipo remoto)$endColour$endColour"
     sleep 0.2
-    echo -e "10.$grayColour Mensajes (equipo remoto)$endColour\n"
+    echo -e "10.$grayColour Mensajes$redColour (equipo remoto)$endColour$endColour\n"
     sleep 2
 
   elif [ "$local_remota" = "remota" ]; then
 
     clear
-    echo -e "$redColour->En mantenimiento...$endColour\n" #Pendiente
+    echo -e "$blueColour->$endColour$yellowColour Cargando interfaz del programa...$endColour\n"
+    sleep 3
+    clear
+    sleep 0.2
+    echo -e "  $blueColour╭━━━┳━━━┳╮╱╭╮╱╱╱╱╭╮$endColour"
+    sleep 0.2
+    echo -e "  $blueColour┃╰━━┫╰━━┫╰━╯┣━━┳━╯┣╮╭┳┳━╮$endColour"
+    sleep 0.2
+    echo -e "  $blueColour╰━━╮┣━━╮┃╭━╮┃╭╮┃╭╮┃╰╯┣┫╭╮╮$endColour"
+    sleep 0.2
+    echo -e "  $blueColour┃╰━╯┃╰━╯┃┃╱┃┃╭╮┃╰╯┃┃┃┃┃┃┃┃$endColour"
+    sleep 0.2
+    echo -e "  $blueColour╰━━━┻━━━┻╯╱╰┻╯╰┻━━┻┻┻┻┻╯╰╯$endColour"
+    sleep 1
+    echo -e "$redColour ------------------------------------------------------------$endColour"
+    sleep 1
+    echo -e "1.$grayColour  Ver direcciones IP's de la red$redColour (equipo local)$endColour$endColour"
+    sleep 0.2
+    echo -e "2.$grayColour  Iniciar proceso de copia de fichero$redColour (equipo local-remoto)$endColour$endColour"
+    sleep 0.2
+    echo -e "3.$grayColour  Simple conexión remota vía SSH$redColour (equipo local-remoto)$endColour$endColour"
+    sleep 0.2
+    echo -e "4.$grayColour  Conexión remota vía SSH invisible$redColour (equipo local-remoto)$endColour$endColour"
+    sleep 0.2
+    echo -e "5.$grayColour  Acceso a la cámara$redColour (equipo remoto)$endColour$endColour"
+    sleep 0.2
+    echo -e "6.$grayColour  Capturador de tráfico de datos - páginas visitadas$redColour (equipo remoto)$endColour$endColour"
+    sleep 0.2
+    echo -e "7.$grayColour  Robar información vía SCP$redColour (equipo remoto)$endColour$endColour"
+    sleep 0.2
+    echo -e "8.$grayColour  Ataques al sistema y envenenamiento$redColour (equipo remoto)$endColour$endColour"
+    sleep 0.2
+    echo -e "9.$grayColour  Redirección gráfica de aplicaciones$redColour (equipo remoto)$endColour$endColour"
+    sleep 0.2
+    echo -e "10.$grayColour Mensajes$redColour (equipo remoto)$endColour$endColour\n"
+    sleep 2
 
   fi
 else
