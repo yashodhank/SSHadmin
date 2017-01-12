@@ -45,69 +45,80 @@ if [ "$(id -u)" = "0" ]; then
   fi
 
   clear
-  sleep 2
-  echo -e "$blueColour->$endColour$yellowColour Se va a proporcionar un listado de los usuarios conectados a la red local$endColour\n"
-  sleep 2
-  echo -e "$redColour[Esto puede tardar unos segundos...]$endColour\n"
-  nmap localhost -sP $ips_locales >> listado_ips && cat listado_ips | grep "MAC" | cut -d ' ' -f 3 >> listado_MACs
-  cat listado_ips | grep "Nmap" | grep "$first_octet" | cut -d ' ' -f 5 >> listado_ipsG && rm listado_ips
-  sed '/https:/d' listado_ipsG >> listado_ips && rm listado_ipsG
-  sed '/localhost/d' listado_ips >> listado_ips2 && rm listado_ips && mv listado_ips2 listado_ips
-  sed '/addresses/d' listado_ips >> listado_ips2 && rm listado_ips && mv listado_ips2 listado_ips
+  echo -e -n "$yellowColour->Indique en qué máquina se encuentra$redColour (local/remota)$endColour:$endColour "
+  read local_remota
 
-  while read line
-    do
+  if [ "$local_remota" = "local" ]; then
+    clear
+    sleep 2
+    echo -e "$blueColour->$endColour$yellowColour Se va a proporcionar un listado de los usuarios conectados a la red local$endColour\n"
+    sleep 2
+    echo -e "$redColour[Esto puede tardar unos segundos...]$endColour\n"
+    nmap localhost -sP $ips_locales >> listado_ips && cat listado_ips | grep "MAC" | cut -d ' ' -f 3 >> listado_MACs
+    cat listado_ips | grep "Nmap" | grep "$first_octet" | cut -d ' ' -f 5 >> listado_ipsG && rm listado_ips
+    sed '/https:/d' listado_ipsG >> listado_ips && rm listado_ipsG
+    sed '/localhost/d' listado_ips >> listado_ips2 && rm listado_ips && mv listado_ips2 listado_ips
+    sed '/addresses/d' listado_ips >> listado_ips2 && rm listado_ips && mv listado_ips2 listado_ips
 
-      echo "$line  -> " >> listado_Ips
+    while read line
+      do
 
-  done < listado_ips
+        echo "$line  -> " >> listado_Ips
 
-  rm listado_ips && mv listado_Ips listado_ips
-  paste -d " " listado_ips listado_MACs >> listado_Nmap && rm listado_ips listado_MACs
-  sed '/192.168.1.1/d' listado_Nmap >> listado_Nmap2 && rm listado_Nmap && mv listado_Nmap2 listado_Nmap
-  cat listado_Nmap | head -n -1 >> listado_Nmap2 && rm listado_Nmap && mv listado_Nmap2 listado_Nmap
-  cat listado_Nmap
-  echo -e "\nTu ip privada: $mi_ip|| Tu dirección MAC: $mi_MAC\n"
-  sleep 1
-  echo -e "$blueColour->$endColour$yellowColour Las ip's han sido guardadas$endColour\n"
-  sleep 4
-  echo -e "$blueColour->$endColour$yellowColour Cargando interfaz del programa...$endColour\n"
-  sleep 3
-  clear
-  sleep 0.2
-  echo -e "  $blueColour╭━━━┳━━━┳╮╱╭╮╱╱╱╱╭╮$endColour"
-  sleep 0.2
-  echo -e "  $blueColour┃╰━━┫╰━━┫╰━╯┣━━┳━╯┣╮╭┳┳━╮$endColour"
-  sleep 0.2
-  echo -e "  $blueColour╰━━╮┣━━╮┃╭━╮┃╭╮┃╭╮┃╰╯┣┫╭╮╮$endColour"
-  sleep 0.2
-  echo -e "  $blueColour┃╰━╯┃╰━╯┃┃╱┃┃╭╮┃╰╯┃┃┃┃┃┃┃┃$endColour"
-  sleep 0.2
-  echo -e "  $blueColour╰━━━┻━━━┻╯╱╰┻╯╰┻━━┻┻┻┻┻╯╰╯$endColour"
-  sleep 1
-  echo -e "$redColour ------------------------------------------------------------$endColour"
-  sleep 1
-  echo -e "1.$grayColour  Ver direcciones IP's de la red (equipo local)$endColour"
-  sleep 0.2
-  echo -e "2.$grayColour  Iniciar proceso de copia de fichero (equipo local-remoto)$endColour"
-  sleep 0.2
-  echo -e "3.$grayColour  Simple conexión remota vía SSH (equipo local-remoto)$endColour"
-  sleep 0.2
-  echo -e "4.$grayColour  Conexión remota vía SSH invisible (equipo local-remoto)$endColour"
-  sleep 0.2
-  echo -e "5.$grayColour  Acceso a la cámara (equipo remoto)$endColour"
-  sleep 0.2
-  echo -e "6.$grayColour  Capturador de tráfico de datos - páginas visitadas (equipo remoto)$endColour"
-  sleep 0.2
-  echo -e "7.$grayColour  Robar información vía SCP (equipo remoto)$endColour"
-  sleep 0.2
-  echo -e "8.$grayColour  Ataques al sistema y envenenamiento (equipo remoto)$endColour"
-  sleep 0.2
-  echo -e "9.$grayColour  Redirección gráfica de aplicaciones (equipo remoto)$endColour"
-  sleep 0.2
-  echo -e "10.$grayColour Mensajes (equipo remoto)$endColour\n"
-  sleep 2
+    done < listado_ips
 
+    rm listado_ips && mv listado_Ips listado_ips
+    paste -d " " listado_ips listado_MACs >> listado_Nmap && rm listado_ips listado_MACs
+    sed '/192.168.1.1/d' listado_Nmap >> listado_Nmap2 && rm listado_Nmap && mv listado_Nmap2 listado_Nmap
+    cat listado_Nmap | head -n -1 >> listado_Nmap2 && rm listado_Nmap && mv listado_Nmap2 listado_Nmap
+    cat listado_Nmap
+    echo -e "\nTu ip privada: $mi_ip|| Tu dirección MAC: $mi_MAC\n"
+    sleep 1
+    echo -e "$blueColour->$endColour$yellowColour Las ip's han sido guardadas$endColour\n"
+    sleep 4
+    echo -e "$blueColour->$endColour$yellowColour Cargando interfaz del programa...$endColour\n"
+    sleep 3
+    clear
+    sleep 0.2
+    echo -e "  $blueColour╭━━━┳━━━┳╮╱╭╮╱╱╱╱╭╮$endColour"
+    sleep 0.2
+    echo -e "  $blueColour┃╰━━┫╰━━┫╰━╯┣━━┳━╯┣╮╭┳┳━╮$endColour"
+    sleep 0.2
+    echo -e "  $blueColour╰━━╮┣━━╮┃╭━╮┃╭╮┃╭╮┃╰╯┣┫╭╮╮$endColour"
+    sleep 0.2
+    echo -e "  $blueColour┃╰━╯┃╰━╯┃┃╱┃┃╭╮┃╰╯┃┃┃┃┃┃┃┃$endColour"
+    sleep 0.2
+    echo -e "  $blueColour╰━━━┻━━━┻╯╱╰┻╯╰┻━━┻┻┻┻┻╯╰╯$endColour"
+    sleep 1
+    echo -e "$redColour ------------------------------------------------------------$endColour"
+    sleep 1
+    echo -e "1.$grayColour  Ver direcciones IP's de la red (equipo local)$endColour"
+    sleep 0.2
+    echo -e "2.$grayColour  Iniciar proceso de copia de fichero (equipo local-remoto)$endColour"
+    sleep 0.2
+    echo -e "3.$grayColour  Simple conexión remota vía SSH (equipo local-remoto)$endColour"
+    sleep 0.2
+    echo -e "4.$grayColour  Conexión remota vía SSH invisible (equipo local-remoto)$endColour"
+    sleep 0.2
+    echo -e "5.$grayColour  Acceso a la cámara (equipo remoto)$endColour"
+    sleep 0.2
+    echo -e "6.$grayColour  Capturador de tráfico de datos - páginas visitadas (equipo remoto)$endColour"
+    sleep 0.2
+    echo -e "7.$grayColour  Robar información vía SCP (equipo remoto)$endColour"
+    sleep 0.2
+    echo -e "8.$grayColour  Ataques al sistema y envenenamiento (equipo remoto)$endColour"
+    sleep 0.2
+    echo -e "9.$grayColour  Redirección gráfica de aplicaciones (equipo remoto)$endColour"
+    sleep 0.2
+    echo -e "10.$grayColour Mensajes (equipo remoto)$endColour\n"
+    sleep 2
+
+  elif [ "$local_remota" = "remota" ]; then
+
+    clear
+    echo -e "$redColour->En mantenimiento...$endColour\n" #Pendiente
+
+  fi
 else
   clear
   echo -e "$redColour->AVISO:$endColour$yellowColour Es necesario entrar como superusuario$endColour\n"
