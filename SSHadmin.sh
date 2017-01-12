@@ -239,6 +239,14 @@ if [ "$(id -u)" = "0" ]; then
 
         ;;
 
+        2 ) echo -e "\n$yellowColour-> Analizando el tráfico de la red...$endColour\n"
+            sleep 2
+            echo -e "\n$yellowColour-> Las páginas visitadas serán mostradas en texto plano...$endColour\n"
+            sleep 2
+            urlsnarf | grep "http://"
+
+        ;;
+
         * ) echo "Opcion incorrecta"
             sleep 2
           break
