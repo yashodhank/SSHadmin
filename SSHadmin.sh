@@ -231,14 +231,14 @@ if [ "$(id -u)" = "0" ]; then
 
       case $opcion in
 
-        1 ) echo -e "\n$yellowColour-> Accediendo a la cámara del dispositivo...$endColour\n"
+        1 ) echo -e "\n$yellowColour-> Accediendo a la cámara del dispositivo...$endColour"
             sleep 2
-            echo -e "$yellowColour-> Cambiando a usuario normal...$endColour\n"
+            echo -e "\n$yellowColour-> A continuación sal del programa, cambia a modo usuario y ejecuta el siguiente comando:$endColour\n"
             sleep 2
-            echo -e -n "$yellowColour-> Especifique el nombre de usuario del sistema:$endColour "
-            read username_remote
-            echo " "
-            sudo -u $username_remote mplayer -fps 20 -cache 50 -tv driver=v4l2:width=64:height=48:device=/dev/video0 tv://
+            echo -e "mplayer -fps 20 -cache 50 -tv driver=v4l2:width=64:height=48:device=/dev/video0 tv://"
+            echo -e "$redColour"
+            echo -e "Presiona <Enter> para volver al menú principal...$endColour\n"
+            read
 
         ;;
 
