@@ -14,6 +14,9 @@ grayColour="\e[0;37m\033[1m"
 ips_locales=$(hostname -I | cut -d '.' -f 1-2).1.1-254
 first_octet=$ips_locales | cut -d '.' -f 1
 pasarela=$(route -n | cut -d ' ' -f 10 | tail -n 3 | head -n 1) # Pasarela
+mi_ip=$(hostname -I)
+mi_tarjeta_red=$(ifconfig | cut -d ' ' -f 1 | tail -n 11 | head -n 1)
+mi_MAC=$(macchanger -s $mi_tarjeta_red | cut -d ' ' -f 3 | tail -n 1)
 
 if [ "$(id -u)" = "0" ]; then
   clear
@@ -39,7 +42,7 @@ if [ "$(id -u)" = "0" ]; then
   sed '/192.168.1.1/d' listado_Nmap >> listado_Nmap2 && rm listado_Nmap && mv listado_Nmap2 listado_Nmap
   cat listado_Nmap | head -n -1 >> listado_Nmap2 && rm listado_Nmap && mv listado_Nmap2 listado_Nmap
   cat listado_Nmap
-  echo " "
+  echo -e "\nTu ip privada: $mi_ip || Tu dirección MAC: $mi_MAC\n"
 else
   clear
   echo -e "$redColour->AVISO:$endColour$yellowColour Es necesario entrar como superusuario$endColour\n"
