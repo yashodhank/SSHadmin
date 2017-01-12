@@ -67,7 +67,7 @@ if [ "$(id -u)" = "0" ]; then
   sed '/192.168.1.1/d' listado_Nmap >> listado_Nmap2 && rm listado_Nmap && mv listado_Nmap2 listado_Nmap
   cat listado_Nmap | head -n -1 >> listado_Nmap2 && rm listado_Nmap && mv listado_Nmap2 listado_Nmap
   cat listado_Nmap
-  echo -e "\nTu ip privada: $mi_ip || Tu dirección MAC: $mi_MAC\n"
+  echo -e "\nTu ip privada: $mi_ip|| Tu dirección MAC: $mi_MAC\n"
 else
   clear
   echo -e "$redColour->AVISO:$endColour$yellowColour Es necesario entrar como superusuario$endColour\n"
