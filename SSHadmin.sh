@@ -68,6 +68,11 @@ if [ "$(id -u)" = "0" ]; then
   cat listado_Nmap | head -n -1 >> listado_Nmap2 && rm listado_Nmap && mv listado_Nmap2 listado_Nmap
   cat listado_Nmap
   echo -e "\nTu ip privada: $mi_ip|| Tu dirección MAC: $mi_MAC\n"
+  sleep 1
+  echo -e "$blueColour->$endColour$yellowColour Las ip's han sido guardadas$endColour\n"
+  sleep 4
+  echo -e "$blueColour->$endColour$yellowColour Cargando interfaz del programa...$endColour\n"
+  sleep 3
 else
   clear
   echo -e "$redColour->AVISO:$endColour$yellowColour Es necesario entrar como superusuario$endColour\n"
