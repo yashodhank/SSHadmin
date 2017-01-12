@@ -80,30 +80,51 @@ if [ "$(id -u)" = "0" ]; then
     sleep 4
     echo -e "$blueColour->$endColour$yellowColour Cargando interfaz del programa...$redColour (local)$endColour$endColour\n"
     sleep 3
-    clear
-    sleep 0.2
-    echo -e "  $blueColour╭━━━┳━━━┳╮╱╭╮╱╱╱╱╭╮$endColour"
-    sleep 0.2
-    echo -e "  $blueColour┃╰━━┫╰━━┫╰━╯┣━━┳━╯┣╮╭┳┳━╮$endColour"
-    sleep 0.2
-    echo -e "  $blueColour╰━━╮┣━━╮┃╭━╮┃╭╮┃╭╮┃╰╯┣┫╭╮╮$endColour"
-    sleep 0.2
-    echo -e "  $blueColour┃╰━╯┃╰━╯┃┃╱┃┃╭╮┃╰╯┃┃┃┃┃┃┃┃$endColour"
-    sleep 0.2
-    echo -e "  $blueColour╰━━━┻━━━┻╯╱╰┻╯╰┻━━┻┻┻┻┻╯╰╯$endColour"
-    sleep 1
-    echo -e "$redColour ------------------------------------------------------------$endColour"
-    sleep 1
-    echo -e "1.$grayColour  Ver direcciones IP's de la red$redColour (equipo local)$endColour$endColour"
-    sleep 0.2
-    echo -e "2.$grayColour  Iniciar proceso de copia de fichero$redColour (equipo local-remoto)$endColour$endColour"
-    sleep 0.2
-    echo -e "3.$grayColour  Simple conexión remota vía SSH$redColour (equipo local-remoto)$endColour$endColour"
-    sleep 0.2
-    echo -e "4.$grayColour  Conexión remota vía SSH invisible$redColour (equipo local-remoto)$endColour$endColour"
-    sleep 0.2
-    echo -e "5.$grayColour  Redirección gráfica de aplicaciones$redColour (equipo local-remoto)$endColour$endColour"
-    sleep 2
+    while true
+      do
+      clear
+      sleep 0.2
+      echo -e "  $blueColour╭━━━┳━━━┳╮╱╭╮╱╱╱╱╭╮$endColour"
+      sleep 0.2
+      echo -e "  $blueColour┃╰━━┫╰━━┫╰━╯┣━━┳━╯┣╮╭┳┳━╮$endColour"
+      sleep 0.2
+      echo -e "  $blueColour╰━━╮┣━━╮┃╭━╮┃╭╮┃╭╮┃╰╯┣┫╭╮╮$endColour"
+      sleep 0.2
+      echo -e "  $blueColour┃╰━╯┃╰━╯┃┃╱┃┃╭╮┃╰╯┃┃┃┃┃┃┃┃$endColour"
+      sleep 0.2
+      echo -e "  $blueColour╰━━━┻━━━┻╯╱╰┻╯╰┻━━┻┻┻┻┻╯╰╯$endColour"
+      sleep 1
+      echo -e "$redColour ------------------------------------------------------------$endColour"
+      sleep 1
+      echo -e "1.$grayColour  Ver direcciones IP's de la red$redColour (equipo local)$endColour$endColour"
+      sleep 0.2
+      echo -e "2.$grayColour  Iniciar proceso de copia de fichero$redColour (equipo local-remoto)$endColour$endColour"
+      sleep 0.2
+      echo -e "3.$grayColour  Simple conexión remota vía SSH$redColour (equipo local-remoto)$endColour$endColour"
+      sleep 0.2
+      echo -e "4.$grayColour  Conexión remota vía SSH invisible$redColour (equipo local-remoto)$endColour$endColour"
+      sleep 0.2
+      echo -e "5.$grayColour  Redirección gráfica de aplicaciones$redColour (equipo local-remoto)$endColour$endColour"
+      sleep 2
+      echo -e "$redColour ------------------------------------------------------------$endColour"
+      echo -e -n "$yellowColour-> Escoge una opción:$endColour "
+      read opcion
+
+      case $opcion in
+
+        1 ) echo -e "\n$yellowColour-> Listando ip's guardadas con sus direscciones MAC correspondientes$endColour\n"
+            sleep 2
+            cat listado_Nmap
+            echo -e "$redColour"
+            echo -e "Presiona <Enter> para continuar...$endColour\n"
+            read
+          break
+        ;;
+
+        * ) echo "Opcion incorrecta"
+
+      esac
+    done
 
   elif [ "$local_remota" = "remota" ]; then
 
