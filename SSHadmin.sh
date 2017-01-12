@@ -19,6 +19,21 @@ mi_tarjeta_red=$(ifconfig | cut -d ' ' -f 1 | tail -n 11 | head -n 1)
 mi_MAC=$(macchanger -s $mi_tarjeta_red | cut -d ' ' -f 3 | tail -n 1)
 
 if [ "$(id -u)" = "0" ]; then
+
+  clear
+  echo -e "$blueColour-> Comprobación de programas instalados...$endColour\n"
+  sleep 2
+
+  if [ ! -x /usr/bin/macchanger ];then
+    echo -e -n "$redColour->$endColour$yellowColour Programa macchanger no instalado, se procede a instalar...\n\n$endColour "
+    sleep 2
+    apt-get install macchanger
+
+  else
+    echo -e "$blueColour-> Programa$redColour macchanger$endColour instalado$endColour\n"
+    sleep 2
+  fi
+
   clear
   sleep 2
   echo -e "$blueColour->$endColour$yellowColour Se va a proporcionar un listado de los usuarios conectados a la red local$endColour\n"
