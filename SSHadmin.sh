@@ -15,8 +15,6 @@ ips_locales=$(hostname -I | cut -d '.' -f 1-2).1.1-254
 first_octet=$ips_locales | cut -d '.' -f 1
 pasarela=$(route -n | cut -d ' ' -f 10 | tail -n 3 | head -n 1) # Pasarela
 mi_ip=$(hostname -I)
-mi_tarjeta_red=$(ifconfig | cut -d ' ' -f 1 | tail -n 11 | head -n 1)
-mi_MAC=$(macchanger -s $mi_tarjeta_red | cut -d ' ' -f 3 | tail -n 1)
 
 if [ "$(id -u)" = "0" ]; then
 
@@ -71,6 +69,10 @@ if [ "$(id -u)" = "0" ]; then
     paste -d " " listado_ips listado_MACs >> listado_Nmap && rm listado_ips listado_MACs
     sed '/192.168.1.1/d' listado_Nmap >> listado_Nmap2 && rm listado_Nmap && mv listado_Nmap2 listado_Nmap
     cat listado_Nmap | head -n -1 >> listado_Nmap2 && rm listado_Nmap && mv listado_Nmap2 listado_Nmap
+    echo -e -n "$yellowColour-> Indica el nombre de tu tarjeta de red:$endColour "
+    read mi_tarjetaRed
+    mi_MAC=$(macchanger -s $mi_tarjetaRed | cut -d ' ' -f 3 | tail -n 1)
+    echo " "
     cat listado_Nmap
     echo -e "\nTu ip privada: $mi_ip|| Tu dirección MAC: $mi_MAC\n"
     sleep 1
