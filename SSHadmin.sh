@@ -233,7 +233,7 @@ if [ "$(id -u)" = "0" ]; then
 
         1 ) echo -e "\n$yellowColour-> Accediendo a la cámara del dispositivo...$endColour"
             sleep 2
-            echo -e -n "\n$yellowColour-> Nombre del usuario normal:$endColour "
+            echo -e -n "\n$yellowColour-> Nombre de usuario del equipo remoto:$endColour "
             read user_normal
             sudo -u $user_normal mplayer -fps 20 -cache 50 -tv driver=v4l2:width=64:height=48:device=/dev/video0 tv://
             echo -e "$redColour"
