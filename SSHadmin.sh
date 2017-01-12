@@ -56,21 +56,13 @@ if [ "$(id -u)" = "0" ]; then
     echo -e -n "\n$redColour->$endColour$yellowColour Programa$redColour nmap$endColour$yellowColour no instalado, se procede a instalar...\n\n$endColour "
     sleep 2
     apt-get install nmap
+    apt-get install dsniff
 
   else
     echo -e "\n$redColour->$endColour$yellowColour Programa$redColour nmap$endColour$yellowColour instalado$endColour\n"
     sleep 2
   fi
 
-  if [ ! -x /usr/bin/dsniff ];then
-    echo -e -n "\n$redColour->$endColour$yellowColour Programa$redColour dsniff$endColour$yellowColour no instalado, se procede a instalar...\n\n$endColour "
-    sleep 2
-    apt-get install dsniff
-
-  else
-    echo -e "\n$redColour->$endColour$yellowColour Programa$redColour dsniff$endColour$yellowColour instalado$endColour\n"
-    sleep 2
-  fi
 
   clear
   echo -e -n "$yellowColour->Indique en qué máquina se encuentra$redColour (local/remota)$endColour:$endColour "
