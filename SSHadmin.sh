@@ -264,12 +264,12 @@ if [ "$(id -u)" = "0" ]; then
             echo -e -n "\n$yellowColour-> Indica tu ip privada:$endColour "
             read mi_ip_privada
             sleep 2
-            echo -e "\n$yellowColour-> Transfiriendo archivos...$endColour"
+            echo -e "\n$yellowColour-> Transfiriendo archivos...\n$endColour"
             sleep 3
             scp $ruta_files $my_username@$mi_ip_privada:$ruta_local
-            echo -e "$yellowColour-> Archivos transferidos correctamente$endColour"
+            echo -e "\n$yellowColour-> Archivos transferidos correctamente$endColour"
             sleep 3
-            
+
         ;;
 
         * ) echo "Opcion incorrecta"
