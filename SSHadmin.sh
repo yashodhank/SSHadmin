@@ -165,7 +165,7 @@ if [ "$(id -u)" = "0" ]; then
               sleep 5
               echo -e "\n$redColour-> Deberás ejecutar el fichero en modo remoto$endColour\n"
               sleep 4
-              ssh -p 22 $name_remote@$ip_remote
+              ssh -X -p 22 $name_remote@$ip_remote
 
           ;;
 
@@ -224,7 +224,7 @@ if [ "$(id -u)" = "0" ]; then
       sleep 0.2
       echo -e "5.$grayColour  Redirección gráfica de aplicaciones$redColour (equipo remoto)$endColour$endColour"
       sleep 0.2
-      echo -e "6.$grayColour  Mensajes$redColour (equipo remoto)$endColour$endColour\n"
+      echo -e "6.$grayColour  Mensajes$redColour (equipo remoto)$endColour$endColour"
       sleep 2
       echo -e "$redColour ------------------------------------------------------------$endColour"
       echo -e -n "$yellowColour-> Escoge una opción:$endColour "
