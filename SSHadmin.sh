@@ -13,6 +13,7 @@ grayColour="\e[0;37m\033[1m"
 #Ips data
 ips_locales=$(hostname -I | cut -d '.' -f 1-2).1.1-254
 first_octet=$ips_locales | cut -d '.' -f 1
+pasarela=$(route -n | cut -d ' ' -f 10 | tail -n 3 | head -n 1) # Pasarela
 
 if [ "$(id -u)" = "0" ]; then
   clear
@@ -36,6 +37,7 @@ if [ "$(id -u)" = "0" ]; then
   rm listado_ips && mv listado_Ips listado_ips
   paste -d " " listado_ips listado_MACs >> listado_Nmap && rm listado_ips listado_MACs
   sed '/192.168.1.1/d' listado_Nmap >> listado_Nmap2 && rm listado_Nmap && mv listado_Nmap2 listado_Nmap
+  cat listado_Nmap | head -n -1 >> listado_Nmap2 && rm listado_Nmap && mv listado_Nmap2 listado_Nmap
   cat listado_Nmap
   echo " "
 else
