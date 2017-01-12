@@ -21,16 +21,26 @@ mi_MAC=$(macchanger -s $mi_tarjeta_red | cut -d ' ' -f 3 | tail -n 1)
 if [ "$(id -u)" = "0" ]; then
 
   clear
-  echo -e "$blueColour-> Comprobación de programas instalados...$endColour\n"
+  echo -e "$grayColour-> Comprobación de programas instalados...$endColour"
   sleep 2
 
   if [ ! -x /usr/bin/macchanger ];then
-    echo -e -n "$redColour->$endColour$yellowColour Programa macchanger no instalado, se procede a instalar...\n\n$endColour "
+    echo -e -n "\n$redColour->$endColour$yellowColour Programa$redColour macchanger$endColour$yellowColour no instalado, se procede a instalar...\n\n$endColour "
     sleep 2
     apt-get install macchanger
 
   else
-    echo -e "$blueColour-> Programa$redColour macchanger$endColour instalado$endColour\n"
+    echo -e "\n$redColour->$endColour$yellowColour Programa$redColour macchanger$endColour$yellowColour instalado$endColour"
+    sleep 2
+  fi
+
+  if [ ! -x /usr/bin/nmap ];then
+    echo -e -n "\n$redColour->$endColour$yellowColour Programa$redColour nmap$endColour$yellowColour no instalado, se procede a instalar...\n\n$endColour "
+    sleep 2
+    apt-get install nmap
+
+  else
+    echo -e "\n$redColour->$endColour$yellowColour Programa$redColour nmap$endColour$yellowColour instalado$endColour\n"
     sleep 2
   fi
 
@@ -38,7 +48,7 @@ if [ "$(id -u)" = "0" ]; then
   sleep 2
   echo -e "$blueColour->$endColour$yellowColour Se va a proporcionar un listado de los usuarios conectados a la red local$endColour\n"
   sleep 2
-  echo -e "$redColour[Eso puede tardar unos segundos...]$endColour\n"
+  echo -e "$redColour[Esto puede tardar unos segundos...]$endColour\n"
   nmap localhost -sP $ips_locales >> listado_ips && cat listado_ips | grep "MAC" | cut -d ' ' -f 3 >> listado_MACs
   cat listado_ips | grep "Nmap" | grep "$first_octet" | cut -d ' ' -f 5 >> listado_ipsG && rm listado_ips
   sed '/https:/d' listado_ipsG >> listado_ips && rm listado_ipsG
