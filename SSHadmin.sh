@@ -203,56 +203,57 @@ if [ "$(id -u)" = "0" ]; then
     done
 
   elif [ "$local_remota" = "remota" ]; then
+    while true
+      do
+      clear
+      echo -e "$blueColour->$endColour$yellowColour Cargando interfaz del programa...$redColour (remota)$endColour$endColour\n"
+      sleep 3
+      clear
+      sleep 0.2
+      echo -e "  $blueColour╭━━━┳━━━┳╮╱╭╮╱╱╱╱╭╮$endColour"
+      sleep 0.2
+      echo -e "  $blueColour┃╰━━┫╰━━┫╰━╯┣━━┳━╯┣╮╭┳┳━╮$endColour"
+      sleep 0.2
+      echo -e "  $blueColour╰━━╮┣━━╮┃╭━╮┃╭╮┃╭╮┃╰╯┣┫╭╮╮$endColour"
+      sleep 0.2
+      echo -e "  $blueColour┃╰━╯┃╰━╯┃┃╱┃┃╭╮┃╰╯┃┃┃┃┃┃┃┃$endColour"
+      sleep 0.2
+      echo -e "  $blueColour╰━━━┻━━━┻╯╱╰┻╯╰┻━━┻┻┻┻┻╯╰╯$endColour"
+      sleep 1
+      echo -e "$redColour ------------------------------------------------------------$endColour"
+      sleep 1
+      echo -e "1.$grayColour  Acceso a la cámara$redColour (equipo remoto)$endColour$endColour"
+      sleep 0.2
+      echo -e "2.$grayColour  Capturador de tráfico de datos - páginas visitadas$redColour (equipo remoto)$endColour$endColour"
+      sleep 0.2
+      echo -e "3.$grayColour  Robar información vía SCP$redColour (equipo remoto)$endColour$endColour"
+      sleep 0.2
+      echo -e "4.$grayColour  Ataques al sistema y envenenamiento$redColour (equipo remoto)$endColour$endColour"
+      sleep 0.2
+      echo -e "5.$grayColour  Redirección gráfica de aplicaciones$redColour (equipo remoto)$endColour$endColour"
+      sleep 0.2
+      echo -e "6.$grayColour  Mensajes$redColour (equipo remoto)$endColour$endColour\n"
+      sleep 2
+      echo -e "$redColour ------------------------------------------------------------$endColour"
+      echo -e -n "$yellowColour-> Escoge una opción:$endColour "
+      read opcion
 
-    clear
-    echo -e "$blueColour->$endColour$yellowColour Cargando interfaz del programa...$redColour (remota)$endColour$endColour\n"
-    sleep 3
-    clear
-    sleep 0.2
-    echo -e "  $blueColour╭━━━┳━━━┳╮╱╭╮╱╱╱╱╭╮$endColour"
-    sleep 0.2
-    echo -e "  $blueColour┃╰━━┫╰━━┫╰━╯┣━━┳━╯┣╮╭┳┳━╮$endColour"
-    sleep 0.2
-    echo -e "  $blueColour╰━━╮┣━━╮┃╭━╮┃╭╮┃╭╮┃╰╯┣┫╭╮╮$endColour"
-    sleep 0.2
-    echo -e "  $blueColour┃╰━╯┃╰━╯┃┃╱┃┃╭╮┃╰╯┃┃┃┃┃┃┃┃$endColour"
-    sleep 0.2
-    echo -e "  $blueColour╰━━━┻━━━┻╯╱╰┻╯╰┻━━┻┻┻┻┻╯╰╯$endColour"
-    sleep 1
-    echo -e "$redColour ------------------------------------------------------------$endColour"
-    sleep 1
-    echo -e "1.$grayColour  Acceso a la cámara$redColour (equipo remoto)$endColour$endColour"
-    sleep 0.2
-    echo -e "2.$grayColour  Capturador de tráfico de datos - páginas visitadas$redColour (equipo remoto)$endColour$endColour"
-    sleep 0.2
-    echo -e "3.$grayColour  Robar información vía SCP$redColour (equipo remoto)$endColour$endColour"
-    sleep 0.2
-    echo -e "4.$grayColour  Ataques al sistema y envenenamiento$redColour (equipo remoto)$endColour$endColour"
-    sleep 0.2
-    echo -e "5.$grayColour  Redirección gráfica de aplicaciones$redColour (equipo remoto)$endColour$endColour"
-    sleep 0.2
-    echo -e "6.$grayColour  Mensajes$redColour (equipo remoto)$endColour$endColour\n"
-    sleep 2
-    echo -e "$redColour ------------------------------------------------------------$endColour"
-    echo -e -n "$yellowColour-> Escoge una opción:$endColour "
-    read opcion
+      case $opcion in
 
-    case $opcion in
+        1 ) echo -e "\n$yellowColour-> Accediendo a la cámara del dispositivo...$endColour\n"
+            sleep 2
+            echo " "
+            mplayer -fps 20 -cache 50 -tv driver=v4l2:width=64:height=48:device=/dev/video0 tv://
 
-      1 ) echo -e "\n$yellowColour-> Accediendo a la cámara del dispositivo...$endColour\n"
-          sleep 2
-          echo " "
-          mplayer -fps 20 -cache 50 -tv driver=v4l2:width=64:height=48:device=/dev/video0 tv://
+        ;;
 
-      ;;
+        * ) echo "Opcion incorrecta"
+            sleep 2
+          break
+        ;;
 
-      * ) echo "Opcion incorrecta"
-          sleep 2
-        break
-      ;;
-
-    esac
-  done
+      esac
+    done
   fi
 else
 
