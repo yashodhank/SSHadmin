@@ -126,13 +126,26 @@ if [ "$(id -u)" = "0" ]; then
               echo -e -n "\n$yellowColour-> Ip privada del equipo:$endColour "
               read ip_remote
               sleep 2
-              echo -e "\n$redColour-> A continuación va a tener que introducir la contraseña del equipo remoto...$endColour"
-              sleep 2
-              echo -e "\n$redColour-> Una vez dentro accede al directorio /tmp del sistema remoto, encontrarás este mismo ejecutable$endColour\n"
+              echo -e "\n$redColour-> A continuación va a tener que introducir la contraseña del equipo remoto...$endColour\n"
               sleep 2
               scp SSHadmin.sh $name_remote@$ip_remote:/tmp
               echo -e "\n$yellowColour-> Archivo transferido correctamente, ejecute la opción 3 para acceder al sistema$endColour\n"
               sleep 2
+
+          ;;
+
+          3 ) echo -e -n "\n$yellowColour-> Nombre de usuario del equipo remoto:$endColour "
+              read name_remote
+              echo -e -n "\n$yellowColour-> Ip privada del equipo:$endColour "
+              read ip_remote
+              sleep 2
+              echo -e "\n$redColour-> A continuación va a tener que introducir la contraseña del equipo remoto...$endColour"
+              sleep 2
+              echo -e "\n$redColour-> Una vez dentro accede al directorio /tmp del sistema remoto, encontrarás este mismo ejecutable$endColour\n"
+              sleep 2
+              echo -e "\n$redColour-> Deberás ejecutar el fichero en modo remoto$endColour\n"
+              sleep 2
+              ssh -p 22 $name_remote@$ip_remote
 
           ;;
 
