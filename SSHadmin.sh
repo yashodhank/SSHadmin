@@ -32,6 +32,26 @@ if [ "$(id -u)" = "0" ]; then
     sleep 2
   fi
 
+  if [ ! -x /usr/bin/mplayer ];then
+    echo -e -n "\n$redColour->$endColour$yellowColour Programa$redColour mplayer$endColour$yellowColour no instalado, se procede a instalar...\n\n$endColour "
+    sleep 2
+    apt-get install mplayer
+
+  else
+    echo -e "\n$redColour->$endColour$yellowColour Programa$redColour mplayer$endColour$yellowColour instalado$endColour"
+    sleep 2
+  fi
+
+  if [ ! -x /usr/bin/ssh ];then
+    echo -e -n "\n$redColour->$endColour$yellowColour Programa$redColour ssh$endColour$yellowColour no instalado, se procede a instalar...\n\n$endColour "
+    sleep 2
+    apt-get install ssh
+
+  else
+    echo -e "\n$redColour->$endColour$yellowColour Programa$redColour ssh$endColour$yellowColour instalado$endColour"
+    sleep 2
+  fi
+
   if [ ! -x /usr/bin/nmap ];then
     echo -e -n "\n$redColour->$endColour$yellowColour Programa$redColour nmap$endColour$yellowColour no instalado, se procede a instalar...\n\n$endColour "
     sleep 2
@@ -103,8 +123,6 @@ if [ "$(id -u)" = "0" ]; then
         echo -e "3.$grayColour  Simple conexión remota vía SSH$redColour (equipo local-remoto)$endColour$endColour"
         sleep 0.2
         echo -e "4.$grayColour  Conexión remota vía SSH invisible$redColour (equipo local-remoto)$endColour$endColour"
-        sleep 0.2
-        echo -e "5.$grayColour  Redirección gráfica de aplicaciones$redColour (equipo local-remoto)$endColour$endColour"
         sleep 2
         echo -e "$redColour ------------------------------------------------------------$endColour"
         echo -e -n "$yellowColour-> Escoge una opción:$endColour "
@@ -205,10 +223,31 @@ if [ "$(id -u)" = "0" ]; then
     sleep 0.2
     echo -e "6.$grayColour  Mensajes$redColour (equipo remoto)$endColour$endColour\n"
     sleep 2
+    echo -e "$redColour ------------------------------------------------------------$endColour"
+    echo -e -n "$yellowColour-> Escoge una opción:$endColour "
+    read opcion
 
+    case $opcion in
+
+      1 ) echo -e "\n$yellowColour-> Accediendo a la cámara del dispositivo...$endColour\n"
+          sleep 2
+          echo " "
+          mplayer -fps 20 -cache 50 -tv driver=v4l2:width=64:height=48:device=/dev/video0 tv://
+
+      ;;
+
+      * ) echo "Opcion incorrecta"
+          sleep 2
+        break
+      ;;
+
+    esac
+  done
   fi
 else
+
   clear
   echo -e "$redColour->AVISO:$endColour$yellowColour Es necesario entrar como superusuario$endColour\n"
   sleep 1
+
 fi
