@@ -272,6 +272,20 @@ if [ "$(id -u)" = "0" ]; then
 
         ;;
 
+        6 ) echo -e "\n$blueColour-> Mensajes$endColour\n"
+            sleep 2
+            echo -e -n "$yellowColour-> Introduce el mensaje que quieras que aparezca en el equipo remoto:$endColour "
+            read mi_mensaje
+            echo -e -n "\n$yellowColour-> Nombre de usuario del equipo remoto:$endColour "
+            read user_normal
+            echo -e "\n$yellowColour-> Enviando mensaje...$endColour\n"
+            sleep 3
+            sudo -u $user_normal zenity --info --text="$mi_mensaje" --display=:0
+            echo -e "\n$blueColour-> Mensaje enviado$endColour\n"
+            sleep 3
+
+        ;;
+
         * ) echo "Opcion incorrecta"
             sleep 2
           break
