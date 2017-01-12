@@ -82,48 +82,66 @@ if [ "$(id -u)" = "0" ]; then
     sleep 3
     while true
       do
-      clear
-      sleep 0.2
-      echo -e "  $blueColour╭━━━┳━━━┳╮╱╭╮╱╱╱╱╭╮$endColour"
-      sleep 0.2
-      echo -e "  $blueColour┃╰━━┫╰━━┫╰━╯┣━━┳━╯┣╮╭┳┳━╮$endColour"
-      sleep 0.2
-      echo -e "  $blueColour╰━━╮┣━━╮┃╭━╮┃╭╮┃╭╮┃╰╯┣┫╭╮╮$endColour"
-      sleep 0.2
-      echo -e "  $blueColour┃╰━╯┃╰━╯┃┃╱┃┃╭╮┃╰╯┃┃┃┃┃┃┃┃$endColour"
-      sleep 0.2
-      echo -e "  $blueColour╰━━━┻━━━┻╯╱╰┻╯╰┻━━┻┻┻┻┻╯╰╯$endColour"
-      sleep 1
-      echo -e "$redColour ------------------------------------------------------------$endColour"
-      sleep 1
-      echo -e "1.$grayColour  Ver direcciones IP's de la red$redColour (equipo local)$endColour$endColour"
-      sleep 0.2
-      echo -e "2.$grayColour  Iniciar proceso de copia de fichero$redColour (equipo local-remoto)$endColour$endColour"
-      sleep 0.2
-      echo -e "3.$grayColour  Simple conexión remota vía SSH$redColour (equipo local-remoto)$endColour$endColour"
-      sleep 0.2
-      echo -e "4.$grayColour  Conexión remota vía SSH invisible$redColour (equipo local-remoto)$endColour$endColour"
-      sleep 0.2
-      echo -e "5.$grayColour  Redirección gráfica de aplicaciones$redColour (equipo local-remoto)$endColour$endColour"
-      sleep 2
-      echo -e "$redColour ------------------------------------------------------------$endColour"
-      echo -e -n "$yellowColour-> Escoge una opción:$endColour "
-      read opcion
+        clear
+        sleep 0.2
+        echo -e "  $blueColour╭━━━┳━━━┳╮╱╭╮╱╱╱╱╭╮$endColour"
+        sleep 0.2
+        echo -e "  $blueColour┃╰━━┫╰━━┫╰━╯┣━━┳━╯┣╮╭┳┳━╮$endColour"
+        sleep 0.2
+        echo -e "  $blueColour╰━━╮┣━━╮┃╭━╮┃╭╮┃╭╮┃╰╯┣┫╭╮╮$endColour"
+        sleep 0.2
+        echo -e "  $blueColour┃╰━╯┃╰━╯┃┃╱┃┃╭╮┃╰╯┃┃┃┃┃┃┃┃$endColour"
+        sleep 0.2
+        echo -e "  $blueColour╰━━━┻━━━┻╯╱╰┻╯╰┻━━┻┻┻┻┻╯╰╯$endColour"
+        sleep 1
+        echo -e "$redColour ------------------------------------------------------------$endColour"
+        sleep 1
+        echo -e "1.$grayColour  Ver direcciones IP's de la red$redColour (equipo local)$endColour$endColour"
+        sleep 0.2
+        echo -e "2.$grayColour  Iniciar proceso de copia de fichero$redColour (equipo local-remoto)$endColour$endColour"
+        sleep 0.2
+        echo -e "3.$grayColour  Simple conexión remota vía SSH$redColour (equipo local-remoto)$endColour$endColour"
+        sleep 0.2
+        echo -e "4.$grayColour  Conexión remota vía SSH invisible$redColour (equipo local-remoto)$endColour$endColour"
+        sleep 0.2
+        echo -e "5.$grayColour  Redirección gráfica de aplicaciones$redColour (equipo local-remoto)$endColour$endColour"
+        sleep 2
+        echo -e "$redColour ------------------------------------------------------------$endColour"
+        echo -e -n "$yellowColour-> Escoge una opción:$endColour "
+        read opcion
 
-      case $opcion in
+        case $opcion in
 
-        1 ) echo -e "\n$yellowColour-> Listando ip's guardadas con sus direscciones MAC correspondientes$endColour\n"
-            sleep 2
-            cat listado_Nmap
-            echo -e "$redColour"
-            echo -e "Presiona <Enter> para continuar...$endColour\n"
-            read
-          break
-        ;;
+          1 ) echo -e "\n$yellowColour-> Listando ip's guardadas con sus direscciones MAC correspondientes$endColour\n"
+              sleep 2
+              cat listado_Nmap
+              echo -e "$redColour"
+              echo -e "Presiona <Enter> para continuar...$endColour\n"
+              read
 
-        * ) echo "Opcion incorrecta"
+          ;;
 
-      esac
+          2 ) echo -e -n "\n$yellowColour-> Nombre de usuario del equipo remoto:$endColour "
+              read name_remote
+              echo -e -n "\n$yellowColour-> Ip privada del equipo:$endColour "
+              read ip_remote
+              sleep 2
+              echo -e "\n$redColour-> A continuación va a tener que introducir la contraseña del equipo remoto...$endColour"
+              sleep 2
+              echo -e "\n$redColour-> Una vez dentro accede al directorio /tmp del sistema remoto, encontrarás este mismo ejecutable$endColour\n"
+              sleep 2
+              scp SSHadmin.sh $name_remote@$ip_remote:/tmp
+              echo -e "\n$yellowColour-> Archivo transferido correctamente, ejecute la opción 3 para acceder al sistema$endColour\n"
+              sleep 2
+
+          ;;
+
+          * ) echo "Opcion incorrecta"
+              sleep 2
+            break
+          ;;
+
+        esac
     done
 
   elif [ "$local_remota" = "remota" ]; then
