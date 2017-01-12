@@ -78,7 +78,7 @@ if [ "$(id -u)" = "0" ]; then
     sleep 1
     echo -e "$blueColour->$endColour$yellowColour Las ip's han sido guardadas$endColour\n"
     sleep 4
-    echo -e "$blueColour->$endColour$yellowColour Cargando interfaz del programa...$endColour\n"
+    echo -e "$blueColour->$endColour$yellowColour Cargando interfaz del programa...$redColour (local)$endColour$endColour\n"
     sleep 3
     clear
     sleep 0.2
@@ -102,23 +102,13 @@ if [ "$(id -u)" = "0" ]; then
     sleep 0.2
     echo -e "4.$grayColour  Conexión remota vía SSH invisible$redColour (equipo local-remoto)$endColour$endColour"
     sleep 0.2
-    echo -e "5.$grayColour  Acceso a la cámara$redColour (equipo remoto)$endColour$endColour"
-    sleep 0.2
-    echo -e "6.$grayColour  Capturador de tráfico de datos - páginas visitadas$redColour (equipo remoto)$endColour$endColour"
-    sleep 0.2
-    echo -e "7.$grayColour  Robar información vía SCP$redColour (equipo remoto)$endColour$endColour"
-    sleep 0.2
-    echo -e "8.$grayColour  Ataques al sistema y envenenamiento$redColour (equipo remoto)$endColour$endColour"
-    sleep 0.2
-    echo -e "9.$grayColour  Redirección gráfica de aplicaciones$redColour (equipo remoto)$endColour$endColour"
-    sleep 0.2
-    echo -e "10.$grayColour Mensajes$redColour (equipo remoto)$endColour$endColour\n"
+    echo -e "5.$grayColour  Redirección gráfica de aplicaciones$redColour (equipo local-remoto)$endColour$endColour"
     sleep 2
 
   elif [ "$local_remota" = "remota" ]; then
 
     clear
-    echo -e "$blueColour->$endColour$yellowColour Cargando interfaz del programa...$endColour\n"
+    echo -e "$blueColour->$endColour$yellowColour Cargando interfaz del programa...$redColour (remota)$endColour$endColour\n"
     sleep 3
     clear
     sleep 0.2
@@ -134,25 +124,17 @@ if [ "$(id -u)" = "0" ]; then
     sleep 1
     echo -e "$redColour ------------------------------------------------------------$endColour"
     sleep 1
-    echo -e "1.$grayColour  Ver direcciones IP's de la red$redColour (equipo local)$endColour$endColour"
+    echo -e "1.$grayColour  Acceso a la cámara$redColour (equipo remoto)$endColour$endColour"
     sleep 0.2
-    echo -e "2.$grayColour  Iniciar proceso de copia de fichero$redColour (equipo local-remoto)$endColour$endColour"
+    echo -e "2.$grayColour  Capturador de tráfico de datos - páginas visitadas$redColour (equipo remoto)$endColour$endColour"
     sleep 0.2
-    echo -e "3.$grayColour  Simple conexión remota vía SSH$redColour (equipo local-remoto)$endColour$endColour"
+    echo -e "3.$grayColour  Robar información vía SCP$redColour (equipo remoto)$endColour$endColour"
     sleep 0.2
-    echo -e "4.$grayColour  Conexión remota vía SSH invisible$redColour (equipo local-remoto)$endColour$endColour"
+    echo -e "4.$grayColour  Ataques al sistema y envenenamiento$redColour (equipo remoto)$endColour$endColour"
     sleep 0.2
-    echo -e "5.$grayColour  Acceso a la cámara$redColour (equipo remoto)$endColour$endColour"
+    echo -e "5.$grayColour  Redirección gráfica de aplicaciones$redColour (equipo remoto)$endColour$endColour"
     sleep 0.2
-    echo -e "6.$grayColour  Capturador de tráfico de datos - páginas visitadas$redColour (equipo remoto)$endColour$endColour"
-    sleep 0.2
-    echo -e "7.$grayColour  Robar información vía SCP$redColour (equipo remoto)$endColour$endColour"
-    sleep 0.2
-    echo -e "8.$grayColour  Ataques al sistema y envenenamiento$redColour (equipo remoto)$endColour$endColour"
-    sleep 0.2
-    echo -e "9.$grayColour  Redirección gráfica de aplicaciones$redColour (equipo remoto)$endColour$endColour"
-    sleep 0.2
-    echo -e "10.$grayColour Mensajes$redColour (equipo remoto)$endColour$endColour\n"
+    echo -e "6.$grayColour Mensajes$redColour (equipo remoto)$endColour$endColour\n"
     sleep 2
 
   fi
