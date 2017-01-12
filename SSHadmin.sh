@@ -129,7 +129,7 @@ if [ "$(id -u)" = "0" ]; then
               echo -e "\n$redColour-> A continuación va a tener que introducir la contraseña del equipo remoto...$endColour\n"
               sleep 2
               scp SSHadmin.sh $name_remote@$ip_remote:/tmp
-              echo -e "\n\n$yellowColour-> Archivo transferido correctamente, ejecute la opción 3 para acceder al sistema$endColour\n"
+              echo -e "\n$yellowColour-> Archivo transferido correctamente, ejecute la opción 3 para acceder al sistema$endColour\n"
               sleep 5
 
           ;;
@@ -160,7 +160,7 @@ if [ "$(id -u)" = "0" ]; then
               sleep 5
               echo -e "\n$redColour-> Deberás ejecutar el fichero en modo remoto$endColour\n"
               sleep 4
-              echo -e "\n$redColour-> Vas a entar en modo invisible, algunos comandos no funcionarán$endColour\n"
+              echo -e "$redColour-> Vas a entar en modo invisible, algunos comandos no funcionarán$endColour\n"
               sleep 4
               ssh -o UserKnownHostsFile=/dev/null -T $name_remote@$ip_remote /bin/bash -i
 
