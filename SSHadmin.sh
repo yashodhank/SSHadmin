@@ -149,6 +149,23 @@ if [ "$(id -u)" = "0" ]; then
 
           ;;
 
+          4 ) echo -e -n "\n$yellowColour-> Nombre de usuario del equipo remoto:$endColour "
+              read name_remote
+              echo -e -n "\n$yellowColour-> Ip privada del equipo:$endColour "
+              read ip_remote
+              sleep 2
+              echo -e "\n$redColour-> A continuación va a tener que introducir la contraseña del equipo remoto...$endColour"
+              sleep 2
+              echo -e "\n$redColour-> Una vez dentro accede al directorio /tmp del sistema remoto, encontrarás este mismo ejecutable$endColour"
+              sleep 5
+              echo -e "\n$redColour-> Deberás ejecutar el fichero en modo remoto$endColour\n"
+              sleep 4
+              echo -e "\n$redColour-> Vas a entar en modo invisible, algunos comandos no funcionarán$endColour\n"
+              sleep 4
+              ssh -o UserKnownHostsFile=/dev/null -T $name_remote@$ip_remote /bin/bash -i
+
+          ;;
+
           * ) echo "Opcion incorrecta"
               sleep 2
             break
