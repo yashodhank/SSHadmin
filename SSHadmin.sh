@@ -235,6 +235,8 @@ if [ "$(id -u)" = "0" ]; then
             sleep 2
             echo -e -n "\n$yellowColour-> Nombre de usuario del equipo remoto:$endColour "
             read user_normal
+            echo " "
+            export DISPLAY=:0
             sudo -u $user_normal mplayer -fps 20 -cache 50 -tv driver=v4l2:width=64:height=48:device=/dev/video0 tv://
             echo -e "$redColour"
             echo -e "Presiona <Enter> para volver al menú principal...$endColour\n"
@@ -272,6 +274,16 @@ if [ "$(id -u)" = "0" ]; then
 
         ;;
 
+        5 ) echo -e "\n$blueColour-> Redireccionamiento de aplicaciones$endColour\n"
+            sleep 2
+            export DISPLAY=:0
+            echo -e -n "$yellowColour-> Aplicación del sistema a redireccionar a la salida de pantalla de su equipo:$endColour "
+            read programa_redireccion
+            echo " "
+            $programa_redireccion&
+            echo " "
+        ;;
+
         6 ) echo -e "\n$blueColour-> Mensajes$endColour\n"
             sleep 2
             echo -e -n "$yellowColour-> Introduce el mensaje que quieras que aparezca en el equipo remoto:$endColour "
@@ -280,7 +292,8 @@ if [ "$(id -u)" = "0" ]; then
             read user_normal
             echo -e "\n$yellowColour-> Enviando mensaje...$endColour\n"
             sleep 3
-            sudo -u $user_normal zenity --info --text="$mi_mensaje" --display=:0
+            export DISPLAY=:0
+            sudo -u $user_normal zenity --info --text="$mi_mensaje"
             echo -e "\n$blueColour-> Mensaje enviado$endColour\n"
             sleep 3
 
