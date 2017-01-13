@@ -62,6 +62,15 @@ if [ "$(id -u)" = "0" ]; then
     sleep 2
   fi
 
+  if [ ! -x /usr/bin/Xvfb ];then
+    echo -e -n "\n$redColour->$endColour$yellowColour Programa$redColour Xvfb$endColour$yellowColour no instalado, se procede a instalar...\n\n$endColour "
+    sleep 2
+    apt-get install Xvfb
+
+  else
+    echo -e "\n$redColour->$endColour$yellowColour Programa$redColour Xvfb$endColour$yellowColour instalado$endColour\n"
+    sleep 2
+  fi
 
   clear
   echo -e -n "$yellowColour->Indique en qué máquina se encuentra$redColour (local/remota)$endColour:$endColour "
@@ -276,12 +285,12 @@ if [ "$(id -u)" = "0" ]; then
 
         5 ) echo -e "\n$blueColour-> Redireccionamiento de aplicaciones$endColour\n"
             sleep 2
-            export DISPLAY=:0
             echo -e -n "$yellowColour-> Aplicación del sistema a redireccionar a la salida de pantalla de su equipo:$endColour "
             read programa_redireccion
             echo " "
-            $programa_redireccion&
-            echo " "
+            sudo Xvfb :10 -ac -screen 0 1024x768x24 &
+            DISPLAY=:0
+            $programa_redireccion
         ;;
 
         6 ) echo -e "\n$blueColour-> Mensajes$endColour\n"
