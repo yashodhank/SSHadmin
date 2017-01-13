@@ -188,7 +188,9 @@ if [ "$(id -u)" = "0" ]; then
               sleep 2
               echo -e "\n$redColour-> Una vez dentro accede al directorio /tmp del sistema remoto, encontrarás este mismo ejecutable$endColour"
               sleep 5
-              echo -e "\n$redColour-> Deberás ejecutar el fichero en modo remoto$endColour\n"
+              echo -e "\n$redColour-> Deberás ejecutar el fichero en modo remoto$endColour"
+              sleep 4
+              echo -e "\n$redColour-> Esta opción es para ejecutar la opción 5 de redirección gráfica$endColour\n"
               sleep 4
               ssh -p 22 $name_remote@$ip_remote
 
@@ -307,7 +309,7 @@ if [ "$(id -u)" = "0" ]; then
             echo " "
             sudo Xvfb :10 -ac -screen 0 1024x768x24 &
             export DISPLAY=:0
-            $programa_redireccion
+            $programa_redireccion&
         ;;
 
         6 ) echo -e "\n$blueColour-> Mensajes$endColour\n"
