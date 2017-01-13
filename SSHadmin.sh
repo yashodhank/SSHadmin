@@ -58,7 +58,7 @@ if [ "$(id -u)" = "0" ]; then
     apt-get install nmap
 
   else
-    echo -e "\n$redColour->$endColour$yellowColour Programa$redColour nmap$endColour$yellowColour instalado$endColour\n"
+    echo -e "\n$redColour->$endColour$yellowColour Programa$redColour nmap$endColour$yellowColour instalado$endColour"
     sleep 2
   fi
 
@@ -130,9 +130,11 @@ if [ "$(id -u)" = "0" ]; then
         sleep 0.2
         echo -e "2.$grayColour  Iniciar proceso de copia de fichero$redColour (equipo local-remoto)$endColour$endColour"
         sleep 0.2
-        echo -e "3.$grayColour  Simple conexión remota vía SSH$redColour (equipo local-remoto)$endColour$endColour"
+        echo -e "3.$grayColour  Simple conexión remota vía SSH$redColour (equipo local-remoto) [-X]$endColour$endColour"
         sleep 0.2
-        echo -e "4.$grayColour  Conexión remota vía SSH invisible$redColour (equipo local-remoto)$endColour$endColour"
+        echo -e "4.$grayColour  Simple conexión remota vía SSH$redColour (equipo local-remoto)$endColour$endColour"
+        sleep 0.2
+        echo -e "5.$grayColour  Conexión remota vía SSH invisible$redColour (equipo local-remoto)$endColour$endColour"
         sleep 2
         echo -e "$redColour ------------------------------------------------------------$endColour"
         echo -e -n "$yellowColour-> Escoge una opción:$endColour "
@@ -178,6 +180,21 @@ if [ "$(id -u)" = "0" ]; then
           ;;
 
           4 ) echo -e -n "\n$yellowColour-> Nombre de usuario del equipo remoto:$endColour "
+              read name_remote
+              echo -e -n "\n$yellowColour-> Ip privada del equipo:$endColour "
+              read ip_remote
+              sleep 2
+              echo -e "\n$redColour-> A continuación va a tener que introducir la contraseña del equipo remoto...$endColour"
+              sleep 2
+              echo -e "\n$redColour-> Una vez dentro accede al directorio /tmp del sistema remoto, encontrarás este mismo ejecutable$endColour"
+              sleep 5
+              echo -e "\n$redColour-> Deberás ejecutar el fichero en modo remoto$endColour\n"
+              sleep 4
+              ssh -p 22 $name_remote@$ip_remote
+
+          ;;
+
+          5 ) echo -e -n "\n$yellowColour-> Nombre de usuario del equipo remoto:$endColour "
               read name_remote
               echo -e -n "\n$yellowColour-> Ip privada del equipo:$endColour "
               read ip_remote
@@ -289,7 +306,7 @@ if [ "$(id -u)" = "0" ]; then
             read programa_redireccion
             echo " "
             sudo Xvfb :10 -ac -screen 0 1024x768x24 &
-            DISPLAY=:0
+            export DISPLAY=:0
             $programa_redireccion
         ;;
 
